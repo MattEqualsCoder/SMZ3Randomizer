@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore -p:PostBuildEvent=
     - name: Test
-     run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal
     - name: Publish Windows 64bit
       if: ${{ github.event_name != 'pull_request' }}
       run: dotnet publish --os win --arch x64 -c Release src/Randomizer.App/Randomizer.App.csproj
