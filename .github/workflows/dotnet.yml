@@ -49,21 +49,9 @@ jobs:
       working-directory: setup
       run: "./MultiplayerServerZipper.ps1"
       shell: pwsh
-    - name: Upload Windows installer
+    - name: Upload artifact
       uses: actions/upload-artifact@v3
       if: ${{ github.event_name != 'pull_request' }}
       with:
-        path: "setup/Output/SMZ3CasRandomizerSetup*.exe"
-        name: Windows installer
-    - name: Upload Linux 64bit package
-      uses: actions/upload-artifact@v3
-      if: ${{ github.event_name != 'pull_request' }}
-      with:
-        path: "setup/Output/SMZ3CasRandomizerLinux*.tar.gz"
-        name: Linux 64bit package
-    - name: Upload Multiplayer Server package
-      uses: actions/upload-artifact@v3
-      if: ${{ github.event_name != 'pull_request' }}
-      with:
-        path: "setup/Output/Randomizer.Multiplayer.Server*.zip"
-        name: Multiplayer Server package
+        path: "setup/Output/*"
+        name: SMZ3 Cas Randomizer ${{ steps.vars.version.number }}

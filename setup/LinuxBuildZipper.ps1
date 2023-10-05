@@ -1,15 +1,17 @@
 $parentFolder = Split-Path -parent $PSScriptRoot
 $folder = "$parentFolder\src\Randomizer.CrossPlatform\bin\Release\net7.0\linux-x64\publish"
+$winFolder = "$parentFolder\src\Randomizer.App\bin\Release\net7.0-windows\win-x86\publish"
 if (-not (Test-Path $folder))
 {
     $folder = "$parentFolder\src\Randomizer.CrossPlatform\bin\Release\net7.0\publish\linux-x64"
+    $winFolder = "$parentFolder\src\Randomizer.App\bin\Release\net7.0-windows\publish\win-x86"
 }
 $version = "0.0.0"
-if (Test-Path "$folder\Randomizer.CrossPlatform.dll") {
-    $version = (Get-Item "$folder\Randomizer.CrossPlatform.dll").VersionInfo.ProductVersion
+if (Test-Path "$winFolder\Randomizer.App.exe") {
+    $version = (Get-Item "$winFolder\Randomizer.App.exe").VersionInfo.ProductVersion
 }
 else {
-    $version = (Get-Item "$folder\SMZ3CasRandomizer.dll").VersionInfo.ProductVersion
+    $version = (Get-Item "$folder\Randomizer.CrossPlatform.dll").VersionInfo.ProductVersion
 }
 
 if (Test-Path -LiteralPath "$folder\Sprites") {
