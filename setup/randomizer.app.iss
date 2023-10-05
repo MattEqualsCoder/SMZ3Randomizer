@@ -7,7 +7,7 @@
 #define MyAppPublisher "Vivelin"
 #define MyAppURL "https://github.com/Vivelin/SMZ3Randomizer"
 #define MyAppExeName "Randomizer.App.exe"
-#define MyAppVersion "9.0.0"
+#define MyAppVersion GetStringFileInfo("..\src\Randomizer.App\bin\Release\net7.0-windows\win-x64\publish\" + MyAppExeName, "ProductVersion")
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -28,7 +28,6 @@ PrivilegesRequiredOverridesAllowed=dialog
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
-OutputDir=setup/Output
 OutputBaseFilename=SMZ3CasRandomizerSetup_{#MyAppVersion}     
 
 [Code]
