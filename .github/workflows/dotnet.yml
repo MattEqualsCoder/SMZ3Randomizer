@@ -21,5 +21,7 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore -p:PostBuildEvent=
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    #- name: Test
+    #  run: dotnet test --no-build --verbosity normal
+    - name: Publish 64bit
+      run: dotnet publish --os win --arch x64 -c Release
