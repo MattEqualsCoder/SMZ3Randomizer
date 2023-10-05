@@ -28,6 +28,7 @@ PrivilegesRequiredOverridesAllowed=dialog
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+OutputDir=setup/Output
 OutputBaseFilename=SMZ3CasRandomizerSetup_{#MyAppVersion}     
 
 [Code]
