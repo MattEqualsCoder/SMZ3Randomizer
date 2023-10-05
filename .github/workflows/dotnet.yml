@@ -40,7 +40,7 @@ jobs:
       id: version
       run: |
         $version = (Get-Item "src\Randomizer.App\bin\Release\net7.0-windows\win-x86\publish\Randomizer.App.exe").VersionInfo.ProductVersion
-        Write-Output "number=$version" >> $GITHUB_OUTPUT
+        Write-Output "number=$version" >> $env:GITHUB_OUTPUT
       shell: pwsh
     - name: Building the Windows installer
       if: ${{ github.event_name != 'pull_request' }}
