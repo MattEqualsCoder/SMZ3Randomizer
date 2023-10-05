@@ -40,7 +40,7 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       working-directory: setup
       run: "./MultiplayerServerZipper.ps1"
-      shell: cmd
+      shell: pwsh
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       if: ${{ github.event_name != 'pull_request' }}
