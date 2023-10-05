@@ -40,7 +40,7 @@ jobs:
       id: version
       run: |
         $version = (Get-Item "src\Randomizer.App\bin\Release\net7.0-windows\win-x86\publish\Randomizer.App.exe").VersionInfo.ProductVersion
-        Write-Output "::set-output name=number::$version"
+        Write-Output "number=$version" >> $$VERSION_NUMBER
       shell: pwsh
     - name: Building the Windows installer
       if: ${{ github.event_name != 'pull_request' }}
@@ -61,4 +61,4 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       with:
         path: "setup/Output/*"
-        name: SMZ3CasRandomizer_${{ steps.vars.version.number }}
+        name: SMZ3CasRandomizer_${{ steps.version.outputs.number }}
