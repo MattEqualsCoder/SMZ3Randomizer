@@ -24,4 +24,5 @@ jobs:
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal
     - name: Publish 64bit
-      run: dotnet publish --os win --arch x64 -c Release ~/src/Randomizer.App/Randomizer.App.csproj
+      if: ${{ github.event_name != 'pull_request' }}
+      run: dotnet publish --os win --arch x64 -c Release src/Randomizer.App/Randomizer.App.csproj
