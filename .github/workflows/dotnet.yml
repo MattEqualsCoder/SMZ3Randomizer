@@ -30,6 +30,14 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       run: dotnet publish --os win --arch x86 -c Release src/Randomizer.App/Randomizer.App.csproj
     - name: Building the installer
+      if: ${{ github.event_name != 'pull_request' }}
+      working-directory: setup
       run: |
         "%programfiles(x86)%\Inno Setup 6\iscc.exe" "randomizer.app.iss"
       shell: cmd
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      if: ${{ github.event_name != 'pull_request' }}
+      with:
+        path: "setup/Output/*"
+        name: files
