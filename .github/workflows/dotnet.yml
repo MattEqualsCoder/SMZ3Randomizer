@@ -26,3 +26,10 @@ jobs:
     - name: Publish 64bit
       if: ${{ github.event_name != 'pull_request' }}
       run: dotnet publish --os win --arch x64 -c Release src/Randomizer.App/Randomizer.App.csproj
+    - name: Publish 32bit
+      if: ${{ github.event_name != 'pull_request' }}
+      run: dotnet publish --os win --arch x86 -c Release src/Randomizer.App/Randomizer.App.csproj
+    - name: Building the installer
+      run: |
+        "%programfiles(x86)%\Inno Setup 6\iscc.exe" "randomizer.app.iss"
+      shell: cmd
